@@ -22,7 +22,7 @@ public class AI : MonoBehaviour
     float enemyDistance;
     Vector3 startingLocation;
     NavMeshAgent agent;
-    float wanderTime = 5.0f;
+    float wanderTime = 3.0f;
     float recoveryTime = 2.0f;
     float wanderTimer = 0.0f;
     float recoveryTimer = 0.0f;
@@ -35,6 +35,7 @@ public class AI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         startingLocation = transform.position;
+        Debug.Log(startingLocation);
     }
 
     // Update is called once per frame
@@ -129,7 +130,7 @@ public class AI : MonoBehaviour
 
         NavMeshHit hit;
 
-        bool gotPoint = NavMesh.SamplePosition(startingLocation + offset, out hit, 1, NavMesh.AllAreas);
+        bool gotPoint = NavMesh.SamplePosition(startingLocation + offset, out hit, 5, NavMesh.AllAreas);
 
         if (gotPoint)
         {
